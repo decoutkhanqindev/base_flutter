@@ -5,7 +5,7 @@ void main() {
   runApp(
     MaterialApp(
       home: SafeArea(
-        child: Scaffold(body: Center(child: TextDemo())),
+        child: Scaffold(body: Center(child: RichTextDemo())),
       ),
     ),
   );
@@ -44,6 +44,49 @@ class TextDemo extends StatelessWidget {
         fontWeight: FontWeight.w700,
         fontFamily: GoogleFonts.playfairDisplay().fontFamily,
       )),
+    );
+  }
+}
+
+class RichTextDemo extends StatelessWidget {
+  const RichTextDemo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return RichText(
+      text: TextSpan(
+        children: [
+          TextSpan(
+            text: "A",
+            style: TextStyle(fontSize: 24, backgroundColor: Colors.black),
+          ),
+          TextSpan(
+            text: "B",
+            style: TextStyle(fontSize: 32, backgroundColor: Colors.black),
+          ),
+          TextSpan(
+            text: "C",
+            children: [
+              TextSpan(
+                text: "d",
+                onEnter: (event) {
+                  print("enter");
+                },
+                onExit: (event) {
+                  print("exit");
+                },
+              ),
+              TextSpan(text: "e"),
+            ],
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              decoration: TextDecoration.underline,
+              backgroundColor: Colors.black,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
