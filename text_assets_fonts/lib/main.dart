@@ -4,8 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 void main() {
   runApp(
     MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SafeArea(
-        child: Scaffold(body: Center(child: RichTextDemo())),
+        child: Scaffold(body: Center(child: TextFieldDemo())),
       ),
     ),
   );
@@ -85,6 +86,99 @@ class RichTextDemo extends StatelessWidget {
               backgroundColor: Colors.black,
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class TextFieldDemo extends StatefulWidget {
+  const TextFieldDemo({super.key});
+
+  @override
+  State<TextFieldDemo> createState() => _TextFieldDemoState();
+}
+
+class _TextFieldDemoState extends State<TextFieldDemo> {
+  late String textValue;
+  late String finalValue;
+
+  TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    textValue = "";
+    finalValue = "";
+    controller.addListener(() {
+      setState(() {
+        textValue = controller.text;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(20),
+      alignment: Alignment.center,
+      child: Column(
+        spacing: 8,
+        children: [
+          TextField(
+            // onChanged: (value) {
+            //   print("onChanged: $value");
+            //   setState(() {
+            //     textValue = value;
+            //   });
+            // },
+            controller: controller,
+            autofocus: true,
+            // textAlign: TextAlign.center,
+            // textDirection: TextDirection.ltr,
+            textInputAction: TextInputAction.search,
+            // go, done, ...
+            textCapitalization: TextCapitalization.characters,
+            // all, words, sentences, none,
+            style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+            cursorColor: Colors.blue,
+            cursorWidth: 2,
+            cursorHeight: 20,
+            // maxLines: 3,
+            maxLength: 10,
+            obscureText: true,
+            // password
+            // decoration: InputDecoration(
+            //   // icon: Icon(Icons.search),
+            //   // prefixIcon: Icon(Icons.add),
+            //   // prefix: Text("abc"),
+            //   // suffix: Text("xyz"),
+            //   hintText: "Enter text",
+            //   hintStyle: TextStyle(color: Colors.grey),
+            //   helperText: "Helper Text",
+            //   // ...
+            // ),
+            decoration: InputDecoration(
+              labelText: "Enter text",
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                finalValue = textValue;
+              });
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.purple,
+              foregroundColor: Colors.white,
+            ),
+            child: Text("Send"),
+          ),
+          Text(textValue),
+          Text(finalValue),
         ],
       ),
     );
