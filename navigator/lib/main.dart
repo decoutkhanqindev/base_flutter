@@ -16,28 +16,27 @@ void main() {
       // initialRoute: Routes.HOME,
 
       // 3
+      // control flow (role, admin, user, ...)
       onGenerateRoute: (settings) {
-        // control flow (role, admin, user, ...)
-
         print(settings.name);
 
         switch (settings.name) {
-          case Routes.HOME:
+          case Routes.home:
             return MaterialPageRoute(
               builder: (context) => Home(),
               settings: settings,
             );
-          case Routes.SCREEN1:
+          case Routes.screen1:
             return MaterialPageRoute(
               builder: (context) => Screen1(),
               settings: settings,
             );
-          case Routes.SCREEN2:
+          case Routes.screen2:
             return MaterialPageRoute(
               builder: (context) => Screen2(),
               settings: settings,
             );
-          case Routes.SCREEN3:
+          case Routes.screen3:
             return MaterialPageRoute(
               builder: (context) => Screen3(),
               settings: settings,
@@ -49,16 +48,16 @@ void main() {
             );
         }
       },
-      initialRoute: Routes.HOME,
+      initialRoute: Routes.home,
     ),
   );
 }
 
 class Routes {
-  static const HOME = "/";
-  static const SCREEN1 = "/screen1";
-  static const SCREEN2 = "/screen2";
-  static const SCREEN3 = "/screen3";
+  static const home = "/";
+  static const screen1 = "/screen1";
+  static const screen2 = "/screen2";
+  static const screen3 = "/screen3";
 }
 
 class Home extends StatelessWidget {
@@ -83,7 +82,7 @@ class Home extends StatelessWidget {
               // 2
               Navigator.pushNamed(
                 context,
-                Routes.SCREEN1,
+                Routes.screen1,
                 arguments: {"arg1": "data from home"},
               );
             },
@@ -114,7 +113,7 @@ class Screen1 extends StatelessWidget {
               // );
 
               // 2
-              Navigator.pushNamed(context, Routes.SCREEN2);
+              Navigator.pushNamed(context, Routes.screen2);
             },
             child: Text("Screen 1 to Screen 2"),
           ),
@@ -142,7 +141,7 @@ class Screen2 extends StatelessWidget {
               // print(result);
 
               // 2
-              Navigator.pushNamed(context, Routes.SCREEN3);
+              Navigator.pushNamed(context, Routes.screen3);
             },
             child: Text("Screen 2 to Screen 3"),
           ),
@@ -175,7 +174,7 @@ class Screen3 extends StatelessWidget {
               // 2
               // Navigator.popUntil(context, ModalRoute.withName(Routes.SCREEN1));
               Navigator.popUntil(context, (route) {
-                if (route.settings.name == Routes.SCREEN1) {
+                if (route.settings.name == Routes.screen1) {
                   (route.settings.arguments as Map)["result"] =
                       "data from screen 3";
                   return true;
