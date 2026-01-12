@@ -21,6 +21,12 @@ class _RollDiceScreenState extends State<RollDiceScreen> {
   ];
   var resultImage = "assets/images/dice-images/dice-1.png";
 
+  void _rollDice() {
+    setState(() {
+      resultImage = images[Random().nextInt(images.length)];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,18 +42,12 @@ class _RollDiceScreenState extends State<RollDiceScreen> {
         centerTitle: true,
         backgroundColor: Colors.greenAccent,
         shadowColor: Colors.black,
-        elevation: 4,
+        elevation: 2,
       ),
       body: RollDiceBody(
         image: resultImage,
         onRoll: _rollDice,
       ),
     );
-  }
-
-  void _rollDice() {
-    setState(() {
-      resultImage = images[Random().nextInt(images.length)];
-    });
   }
 }
