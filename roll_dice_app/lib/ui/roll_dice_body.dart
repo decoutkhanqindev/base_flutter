@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RollDiceBody extends StatelessWidget {
   final String image;
-  final Function() onRoll;
+  final VoidCallback onRoll;
 
   const RollDiceBody({
     super.key,
@@ -15,6 +15,16 @@ class RollDiceBody extends StatelessWidget {
     return Container(
       alignment: Alignment.center,
       padding: const EdgeInsets.all(16),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Colors.greenAccent,
+            Colors.blue,
+          ],
+        ),
+      ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

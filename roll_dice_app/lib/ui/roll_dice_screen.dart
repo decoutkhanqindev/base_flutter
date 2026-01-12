@@ -25,16 +25,22 @@ class _RollDiceScreenState extends State<RollDiceScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Roll Dice App"),
-        centerTitle: true,
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(16),
-        child: RollDiceBody(
-          image: resultImage,
-          onRoll: _rollDice,
+        title: const Text(
+          "Roll Dice App",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.greenAccent,
+        shadowColor: Colors.black,
+        elevation: 4,
+      ),
+      body: RollDiceBody(
+        image: resultImage,
+        onRoll: _rollDice,
       ),
     );
   }
