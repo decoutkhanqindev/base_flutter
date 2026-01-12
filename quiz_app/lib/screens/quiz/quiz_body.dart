@@ -36,7 +36,7 @@ class QuizBody extends StatelessWidget {
             onPressed: onNavigateToQuestionsScreen,
             style: OutlinedButton.styleFrom(
               foregroundColor: Colors.white,
-              side: const BorderSide(color: Colors.white),
+              side: const BorderSide(color: Colors.white, width: 2),
               backgroundColor: Colors.transparent,
             ),
             label: const Text("Start Quiz"),
